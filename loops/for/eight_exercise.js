@@ -9,16 +9,16 @@
 //Note: This is actually an interview question that has been claimed to weed out a significant percentage of programmer candidates. 
 //So if you’ve solved it, you’re now allowed to feel good about yourself.
 
-for(var i = 0; i < 100; i++){
-    if(i%3 === 0){
-        console.log("Fizz");        
-    }else if(i%5 === 0){
+for (var i = 1; i <= 100; i++) {
+    if (i % 3 === 0) {
+        console.log("Fizz");
+    } else if (i % 5 === 0) {
         console.log("Buzz");
-    }else{
-        console.log(i);        
+    } else {
+        console.log(i);
     }
-    if (i%3 === 0 && i%5 === 0) {
-        console.log("FizzBuzz");        
+    if (i % 3 === 0 && i % 5 === 0) {
+        console.log("FizzBuzz");
     }
 }
 
