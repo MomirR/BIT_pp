@@ -1,0 +1,1 @@
+var strLength = str.length;
