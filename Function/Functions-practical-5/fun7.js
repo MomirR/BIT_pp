@@ -8,17 +8,18 @@ var array = ["M", "Anne", 12, "Steve", "Joe", "John", "David", "Mark", true, "A"
 
 function concatenation(array) {
     var text = [];
-    var finalText;
-    for (i = 0; i < array.length; i++) {
+    var finalText = "";
+    for (i = 0, j = 0; i < array.length; i++) {
         if (typeof array[i] === "string") {
-            text[i] += array[i];
-            if (text[i] >= 2) {
-                finalText += text;
+            if (array[i].length >= 2) {
+                text[j] = array[i][0] && array[i][1];
+                j++;
             }
         }
+        // console.log(array);
     }
     return finalText;
 }
-
 var res = concatenation(array);
+console.log(res);
 
