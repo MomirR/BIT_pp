@@ -12,14 +12,6 @@ function printSecondMin(array) {
             min = array[i];
 
         }
-
-        // for (i = 0; i < array.length; i++) {
-        //     if (array[i] > min && array[i] < secondSmall) {
-        //         secondSmall = array[i];
-        //     }
-        // }
-
-
     }
 
     for (j = 0; j < array.length; j++) {
