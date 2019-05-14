@@ -8,9 +8,26 @@
 // Obese: greater than or equal to 30 but less than 40
 // Morbidly obese: greater than or equal to 40
 
-var kg = 113.3;
-var height = 190;
+var weight = 133.3;
+var height = 1.9;
 
-var BMI = function () {
-    kg i height*2
+function bmi(weight, height) {
+    var BodyMI = weight / (height * height);
+    if (BodyMI < 15) {
+        console.log("Starvation: less than 15");
+    } else if (BodyMI >= 15 && BodyMI < 17.5) {
+        console.log("Anorexic: less than 17.5");
+    } else if (BodyMI >= 17.5 && BodyMI < 18.5) {
+        console.log("Underweight: less than 18.5");
+    } else if (BodyMI >= 18.5 && BodyMI < 25) {
+        console.log("Ideal: greater than or equal to 18.5 but less than 25");
+    } else if (BodyMI >= 25 && BodyMI < 30) {
+        console.log("Overweight: greater than or equal to 25 but less than 30");
+    } else if (BodyMI >= 30 && BodyMI < 40) {
+        console.log("Obese: greater than or equal to 30 but less than 40");
+    } else if (BodyMI >= 40) {
+        console.log("Morbidly obese: greater than or equal to 40");
+    }
 }
+
+bmi(weight, height);

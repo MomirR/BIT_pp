@@ -24,5 +24,3 @@ function copyingTheArray(firstArray) {
     }
     return firstArray;
 }
-
-
