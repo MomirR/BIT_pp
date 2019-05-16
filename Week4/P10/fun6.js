@@ -19,7 +19,7 @@ var errorCallback = function () {
 function validation(input, success, error) {
 
     for (i = 0; i < input.length; i++) {
-        if (isFinite(input[i]) === true) {
+        if (isFinite(input[i]) === true && input.length >= 6) {
             return success;
         }
     }
@@ -28,4 +28,3 @@ function validation(input, success, error) {
 }
 
 console.log(validation(input, successCallback(), errorCallback()));
-
