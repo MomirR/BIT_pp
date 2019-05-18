@@ -11,7 +11,7 @@
 
 // i[0] --> ********* duzina reci + 4charactera = maxLength. 
 // i[maxLength - 1] --> lastLine
-// 
+
 var strings = ["Hello", "World", "in", "a", "frame"];
 var figure = "";
 var star = "*";
@@ -30,28 +30,51 @@ function findingLength(strings) {
 }
 
 function printingStars(lineLength) {
+    var figure = "";
+    var star = "*";
     for (i = 0; i < lineLength; i++) {
         figure += star;
     }
     figure += "\n";
     return figure;
 }
-//console.log(printingStars(findingLength(strings)));
 
-function finalFigure(lineLength) {
-    var j = 0
+function finalFigure(lineLength, printStars) {
     var final = "";
-    for (i = 0; i < (strings.length + 1); i++) {
-        if (i === 0 || i === strings.length + 1) {
-            final += printingStars(findingLength(strings));
-            continue;
-        } else {
-            final += "* " + strings[j] + " *" + "\n";
-            j++;
-            continue;
-        }
+    //prvi red zvezdica
+    final += printStars(lineLength);
+
+    for (i = 0; i < strings.length; i++) {
+        final += "* " + strings[i] + " *" + "\n";
     }
+    //poslednji red zvezdica
+    final += printStars(lineLength);
+
     return final;
 }
-console.log(finalFigure(findingLength(strings)));
+console.log(finalFigure(findingLength(strings), printingStars));
+// var strings = ["Hello", "World", "in", "a", "frame"];
+function stringLength(strings) {
+    var maxLength = [];
+    stringLength(strings);
+
+    for (i = 0; i < strings.length; i++) {
+        for (j = 0; j < strings[i].length; j++) {
+            
+            maxLength[i] = strings[i].length;
+        }
+    }
+    return maxLength;
+}
+// console.log(stringLength(strings));
+
+// 9 - maxLength = sum; / 2;
+
+function calculating(stringLength) {
+    var sum;
+    sum = (stringLength - ) / 2;
+    sum = Math.floor(sum);
+    return sum;
+}
+calculating(findingLength(strings), stringLength(strings), );
 

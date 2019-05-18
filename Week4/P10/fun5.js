@@ -2,21 +2,19 @@
 // Input: 034
 // Output: 28
 
+//PRVI NACIN
 // var input = 034;
-
 // var result = (function (input) {
-
 //     function calculates() {
 //         var convertingToString = " ";
 //         convertingToString += input;
 //         return convertingToString;
 //     };
 //     return calculates();
-
 // })(input);
 // console.log(result);
 
-
+//DRUGI NACIN
 var input = 034;
 var result;
 
