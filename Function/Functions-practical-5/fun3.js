@@ -43,4 +43,5 @@ function correspondingGrade(students, points) {
     }
 }
 var rez = correspondingGrade(students, points);
-console.log(rez);
+
+
