@@ -9,9 +9,6 @@
 // * frame *
 // *********
 
-// i[0] --> ********* duzina reci + 4charactera = maxLength. 
-// i[maxLength - 1] --> lastLine
-// 
 var strings = ["Hello", "World", "in", "a", "frame"];
 var figure = "";
 var star = "*";
@@ -30,28 +27,37 @@ function findingLength(strings) {
 }
 
 function printingStars(lineLength) {
+    var figure = "";
+    var star = "*";
     for (i = 0; i < lineLength; i++) {
         figure += star;
     }
     figure += "\n";
     return figure;
 }
-//console.log(printingStars(findingLength(strings)));
 
-function finalFigure(lineLength) {
-    var j = 0
+function finalFigure(lineLength, printStars) {
     var final = "";
-    for (i = 0; i < (strings.length + 1); i++) {
-        if (i === 0 || i === strings.length + 1) {
-            final += printingStars(findingLength(strings));
-            continue;
-        } else {
-            final += "* " + strings[j] + " *" + "\n";
-            j++;
-            continue;
+    var emptySpaces;
+    var space = "";
+    
+    //prvi red zvezdica
+    final += printStars(lineLength);
+
+    //ostali redovi
+    for (i = 0; i < strings.length; i++) {
+        emptySpaces = lineLength - strings[i].length - 4;
+        for (j = 0; j < emptySpaces; j++) {
+            space += " ";            
         }
+        final += "* " + strings[i] + space + " *" + "\n";
+        space = "";
     }
+    
+    //poslednji red zvezdica
+    final += printStars(lineLength);
+
     return final;
 }
-console.log(finalFigure(findingLength(strings)));
+console.log(finalFigure(findingLength(strings), printingStars));
 

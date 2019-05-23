@@ -23,11 +23,3 @@ function mainFun(filter, input) {
 }
 
 console.log(mainFun(filter, input));
-
-
-//     for (i = 0; i < input.length; i++) {
-//         var checking = ( % 2 !== 0) ? true : false;
-//     }
-//     return checking;
-// }
-// console.log(test(input));
