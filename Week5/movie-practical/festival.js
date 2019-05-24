@@ -1,28 +1,27 @@
-// Create constructor functions with properties representing the following:
-// Genre - name
-// Movie - title, genre (instance of Genre), length
-// Program - date, list of movies (initially empty) and total number of movies 
-// Festival - name, list of programs (initially empty), and number of movies in all programs
 
-// Add method getData to Genre which returns formatted string as first and last letter of genre name
-// "Action" -> AN
-// "Drama" -> DA
-// "Comedy" -> CY
 
-// Add getData method to Movie. It should return a formatted string consisting of the movie title, length and genre acronym.
-// The Shawshank Redemption, 130min, AN
-// Add addMovie method to Program. It should receive a Movie and add the movie to the movie list of a given program. 
-// Add addProgram method to Festival. It should receive a Program and add the program to the list of the given festival’s programs. 
+// Inside your immediately-invoking function, add createMovie function that receives a movie title, movie length and genre (as a string) as parameters and returns a created Movie.
 
-// Add getData method to Program. It should return a formatted string of all data related to the program. 
-// The string should contain date, program length (calculated from length of all movies in a list) and data about movies in a list (see the example below). 
-// To display movie data, use Movie’s getData method.
+// Inside your immediately-invoking function, add createProgram function that receives a date and returns a created Program.
 
-// Date, program length from all movies
-//      First movie title, length and genre
-//      Second movie title, length and genre
-//      Third movie title, length and genre
-//      Fourth movie name and length and genre
+// Start creating your movie festival.
+
+// In your main program function, create an instance of the Festival object. 
+
+// Create two instances of Program using createProgram function.
+
+// Create four instances of Movie object using createMovie function. Add all created movies to both programs using the addMovie method.
+
+// Add the created program instances to the created festival instance using festival’s addProgram method.
+
+// Display festival’s data using getData method.
+
+// Hints
+// List is a synonym for array, so when we say a list of movies, it’s actually an array of movie objects
+// Use JS built-in Date()object to create Date object
+// Use \t and \n special strings to format output 
+// Use built-in String methods to transform text from lowercase to uppercase
+// Use Array’s built-in methods to add and remove elements from an array
 
 
 
@@ -33,9 +32,9 @@
     function Genre(nameOfGenre) {
         this.genre = nameOfGenre;
 
-        this.getData = function (nameOfGenre) {
+        this.getData = function () {
             var formattedString = "";
-            formattedString += nameOfGenre[0] + nameOfGenre.length - 1;
+            formattedString += this.genre[0] + this.genre[this.genre.length - 1];
             formattedString = formattedString.toUpperCase();
             return formattedString;
         }
@@ -44,18 +43,18 @@
 
     function Movie(title, genre, length) {
         this.titleMovie = title;
-        this.genre = new Genre(genre).genre;
+        this.genre = new Genre(genre).getData();
         this.lengthMovie = length;
 
         this.getData = function (title, length, genre) {
             var formattedString = "";
-            formattedString += title + ", " + length + ", " + genre;
+            formattedString += title + ", " + length + ", " + this.genre;
             return formattedString;
         }
     }
 
-    function Program(date, movie) {
-        this.date = date;
+    function Program(date) {
+        this.date = new Date(date);
         this.listOfMovies = [];
         this.numberOfMovies = this.listOfMovies.length;
 
@@ -66,13 +65,12 @@
         this.getData = function () {
             var formattedString = "";
             var movieLength = 0;
-            for (i = 0; i < this.listOfMovies.length; i++) {
-            movieLength += parseInt(this.listOfMovies.length[i].lengthMovie);
-                // formattedString += this.date + " " + this.listOfMovies[i] + " " + this.numberOfMovies; 
+            for (var i = 0; i < this.listOfMovies.length; i++) {
+                movieLength += parseInt(this.listOfMovies[i].lengthMovie);
             }
-            formattedString += this.date + ", " + movieLength + "\n";
-            for (i = 0; i < this.listOfMovies.length; i++) {
-                formattedString += "\t" + this.listOfMovies[i].titleMovie + ", " + this.listOfMovies[i].lengthMovie + " " + this.listOfMovies[i].genre + "\n";  
+            formattedString += this.date.getFullYear() + ", " + movieLength + "\n";
+            for (var i = 0; i < this.listOfMovies.length; i++) {
+                formattedString += "\t" + this.listOfMovies[i].titleMovie + ", " + this.listOfMovies[i].lengthMovie + " " + this.listOfMovies[i].genre + "\n";
             }
             return formattedString;
         }
@@ -81,26 +79,75 @@
     function Festival(name) {
         this.name = name;
         this.festivalListOfPrograms = [];
-        this.numberOfMovies = new Program(date, movie).numberOfMovies;  //and number of movies in all programs
 
-        this.addProgram = function (program) {
-            Festival.festivalListOfPrograms.push(program);
+        this.addProgram = function (name) {
+            this.festivalListOfPrograms.push(name);
         }
 
-        this.getData = function (name, ) {
+        this.getData = function () {
             var formattedString = "";
+            var numberOfMoviesLength;
+            for (var i = 0; i < this.festivalListOfPrograms; i++) {
+                numberOfMoviesLength += this.festivalListOfPrograms[i].listOfMovies.length + " ";
+                formattedString += this.festivalListOfPrograms[i].getData();
+            }
+
+            return this.name + " has " + this.numberOfMovies() + " movie titles \n" + formattedString;
+        }
+
+        this.numberOfMovies = function () {
+            var sum = 0;
+            for (var i = 0; i < this.festivalListOfPrograms.length; i++) {
+                sum += this.festivalListOfPrograms[i].listOfMovies.length
+            }
+            return sum;
         }
     }
+
+    var terminator2 = new Movie("Terminator 2", "Action", "120min.");
+    var shutterIsland = new Movie("Shutter Island", "Thriller", "139min.");
+    var vanillaSky = new Movie("Vanilla Sky", "Fantasy", "137min.");
+    var piratesOfTheCaribbean = new Movie("Pirates Of The Caribbean", "Action", "132min.");
+    // console.log(piratesOfTheCaribbean);
+    var firstDay = new Program("12 18 2019.");
+    // console.log(firstDay);
+    var cannesFestival = new Festival("Cannes Festival");
+    var secondDay = new Program("12 19 2019.");
+    var thirdDay = new Program("12 20 2019.");
+
+    //creating 4 movies
+    var rocky = new Movie("Rocky", "Action", "128min.");
+    var dieHard = new Movie("Die Hard", "Action", "114min.");
+    var lordOfTHeRings = new Movie("Lord Of THe Rings", "Fantasy", "180min.");
+    var harryPotter = new Movie("Harry Potter", "Fantasy", "131min.");
+
+    //adding films to programs
+    firstDay.addMovie(terminator2);
+    firstDay.addMovie(shutterIsland);
+    firstDay.addMovie(vanillaSky);
+
+    secondDay.addMovie(piratesOfTheCaribbean);
+    secondDay.addMovie(rocky);
+
+    thirdDay.addMovie(dieHard);
+    thirdDay.addMovie(lordOfTHeRings);
+    thirdDay.addMovie(harryPotter);
+
+    //adding programs to festival
+    cannesFestival.addProgram(firstDay);
+    cannesFestival.addProgram(secondDay);
+    cannesFestival.addProgram(thirdDay);
+
+    // Display festival’s data using getData method.
+    console.log(cannesFestival.getData());
+    console.log(firstDay.getData());
+
+
 })();
-// Add method getData to Festival which return formatted string like festival name, number of movies in all programs and all programs listed. 
-// Use Programs getData method to list all programs. (example output is shown below)
 
-// Weekend festival has 4 movie titles
-// 	28.10.2017, program duration 368min
-// 		Spider-Man: Homecoming, 133min, AN
-// 		War for the Planet of the Apes, 140min, DA
-// 		The Dark Tower, 95min, WN
-// 	29.10.2017, program duration 108min
-// 		Deadpool, 108min, CY
-
-
+// Hints
+// List is a synonym for array, so when we say a list of movies, it’s actually an array of movie objects
+// Use JS built-in Date()object to create Date object
+// Use \t and \n special strings to format output 
+// Use built-in String methods to transform text from lowercase to uppercase
+// Use Array’s built-in methods to add and remove elements from an array
