@@ -13,14 +13,9 @@
     <div class="container">
         <h1>Movie list</h1>
         <p class="moviePar">Movie</p>
-        <form action="">
-            <label for="title">Title</label>
-            <input id="title" type="text" value="" name="title" placeholder="title">
-
-            <label for="length">Length (min)</label>
-            <input id="length" type="text" value="" name="length" placeholder="length in min">
-
-            <select name="drop-down" id="drop-down">
+        <form action=""><label for="title">Title</label><input id="title" type="text" value="" name="title"
+                placeholder="title"><label for="length">Length (min)</label><input id="length" type="text" value=""
+                name="length" placeholder="length in min"><select name="drop-down" id="drop-down">
                 <option value="">-</option>
                 <option value="drama">Drama</option>
                 <option value="action">Action</option>
@@ -28,20 +23,12 @@
                 <option value="comedy">Comedy</option>
                 <option value="adventure">Adventure</option>
             </select>
-
-            <input class="button" type="submit" value="Create movie" name="submitButton">
-
+            <p id="error"></p><input id="button" type="submit" value="Create movie" name="submitButton">
         </form>
-
     </div>
-
     <div class="container">
-        <p class="printing">
-
-        </p>
+        <p id="printing"></p>
     </div>
-
-
     <script src="js/entities.js"></script>
     <script src="js/app.js"></script>
 </body>

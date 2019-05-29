@@ -9,9 +9,9 @@ body {
 }
 
 .container {
-    width: 1200px;
+    width: 960px;
     margin: 0 auto;
-    border: 1px solid black;
+    border: 2px solid grey;
 }
 
 h1 {
@@ -23,7 +23,7 @@ h1 {
 }
 
 form {
-    border: 1px solid black;
+    border: 2px solid grey;
     padding: 10px;
     margin: 10px;
 }
@@ -39,9 +39,27 @@ form input {
     width: 100%
 }
 
-.button {
+#button {
     background-color: rgb(57, 163, 57);
     color: white;
     padding: 10px;
     width: 100%
+}
+
+#error {
+    height: 20px;
+    padding-top: 4px;
+    color: red;
+}
+
+#printing {
+    padding: 5px;
+    border: 1px soli grey;
+    background-color: rgb(160, 189, 160);
+
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+#printing p {
+    margin-left: 30px;
 }
