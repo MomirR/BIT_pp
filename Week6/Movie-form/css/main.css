@@ -1,0 +1,47 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    margin-top: 10px;
+}
+
+.container {
+    width: 1200px;
+    margin: 0 auto;
+    border: 1px solid black;
+}
+
+h1 {
+    text-align: center;
+}
+
+.moviePar {
+    margin-left: 10px;
+}
+
+form {
+    border: 1px solid black;
+    padding: 10px;
+    margin: 10px;
+}
+
+form input {
+    margin: 10px 0;
+    display: block;
+    padding: 5px;
+    width: 100%
+}
+
+#drop-down {
+    width: 100%
+}
+
+.button {
+    background-color: rgb(57, 163, 57);
+    color: white;
+    padding: 10px;
+    width: 100%
+}
