@@ -1,49 +1,53 @@
 /********************************** MAIN APP STARTS******************************************/
 
 //Constructor for Application
-function App(name, licence, stars) {
-    this.name = name;
-    this.licence = licence;
-    this.stars = stars;
-}
+class App {
+    constructor(name, licence, stars) {
+        this.name = name;
+        this.licence = licence;
+        this.stars = stars;
+    }
 
-//adding methods to main app
-App.prototype.isCCLicence = function (licence) {
-    var lic = licence.toLowerCase();
-    if (lic === "cc" || lic === "creative commons") {
-        return "He has licence";;
-    } else {
-        return "He has no licence";
+    isCCLicence(licence) {
+        var lic = licence.toLowerCase();
+        if (lic === "cc" || lic === "creative commons") {
+            return "He has licence";;
+        } else {
+            return "He has no licence";
+        }
+    }
+
+    like(numberOfLikes) {
+        var numOfStars = parseInt(numberOfLikes);
+        this.stars = numOfStars;
+    }
+
+    showStars() {
+        return this.stars;
+    }
+
+    getDataWeb() {
+        var string = "";
+        string += this.name + "\n" + this.url + "\n" + this.technologies + "\n" + this.licence + "\n" + this.stars;
+        return string;
+    }
+
+    getDataMob() {
+        var string = "";
+        string += this.name + "\n" + this.platforms + "\n" + this.licence + "\n" + this.stars;
+        return string;
     }
 }
 
-App.prototype.like = function (numberOfLikes) {
-    var numOfStars = parseInt(numberOfLikes);
-    this.stars = numOfStars;
-}
-
-App.prototype.showStars = function () {
-    return this.stars;
-}
-
-App.prototype.getDataWeb = function () {
-    var string = "";
-    string += this.name + "\n" + this.url + "\n" + this.technologies + "\n" + this.licence + "\n" + this.stars;
-    return string;
-}
-
-App.prototype.getDataMob = function () {
-    var string = "";
-    string += this.name + "\n" + this.platforms + "\n" + this.licence + "\n" + this.stars;
-    return string;
-}
 /********************************** WEB APP STARTS******************************************/
 
 //Constructor fun WebApp
-function WebApp(url, technologies, name, licence, stars) {
-    App.call(this, name, licence, stars);
-    this.url = url;
-    this.technologies = technologies;
+class WebApp {
+    constructor(url, technologies, name, licence, stars) {
+        App.call(this, name, licence, stars);
+        this.url = url;
+        this.technologies = technologies;
+    }
 }
 //Inherit methods from App
 WebApp.prototype = Object.create(App.prototype);
