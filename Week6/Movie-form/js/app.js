@@ -18,7 +18,7 @@ function mainFunction(e) {
     var firstMovie = new Movie(titleValue, lengthValue, dropValue);
     var finalRes = firstMovie.getData();
 
-    if (titleValue === "" || lengthValue === "" || dropValue === "" || lengthValue < 0) {
+    if (!titleValue || !lengthValue || !dropValue || lengthValue < 0) {
         $errorPar.textContent = "Doslo je do greske. Molimo vas popunite sva polja!";
     }
 
