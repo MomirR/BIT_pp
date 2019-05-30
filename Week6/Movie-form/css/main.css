@@ -43,7 +43,8 @@ form input {
     background-color: rgb(57, 163, 57);
     color: white;
     padding: 10px;
-    width: 100%
+    width: 100%;
+    border-radius: 20px;
 }
 
 #error {
@@ -54,12 +55,17 @@ form input {
 
 #printing {
     padding: 5px;
-    border: 1px soli grey;
-    background-color: rgb(160, 189, 160);
-
+    border: 1px soli rgb(87, 80, 80);
+    background-color: rgb(10, 198, 204);
+    color: rgb(87, 80, 80);
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    text-align: left;
 }
 
 #printing p {
     margin-left: 30px;
+}
+
+#total-length {
+    text-align: right;
 }

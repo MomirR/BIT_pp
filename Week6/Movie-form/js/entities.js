@@ -15,7 +15,7 @@ class Movie {
     }
 
     getData() {
-        return this.name + " ,  " + this.duration + " ,  " + this.formatedString();
+        return this.name + ",  " + "  duration: " + this.duration + ",  " + "  genre: " + this.formatedString();
     }
 }
 
