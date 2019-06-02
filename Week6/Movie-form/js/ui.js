@@ -53,14 +53,3 @@ var UIController = (function () {
         collectData: collectData
     };
 })();
-
-
-
-
-
-
-
-
-
-
-

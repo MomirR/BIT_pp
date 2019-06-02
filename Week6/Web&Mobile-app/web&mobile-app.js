@@ -1,4 +1,4 @@
-/********************************** MAIN APP STARTS******************************************/
+/********************************** MAIN APP STARTS ******************************************/
 
 //Constructor for Application
 class App {
@@ -39,57 +39,59 @@ class App {
     }
 }
 
-/********************************** WEB APP STARTS******************************************/
+/********************************** WEB APP STARTS ******************************************/
 
 //Constructor fun WebApp
-class WebApp {
+class WebApp extends App {
     constructor(url, technologies, name, licence, stars) {
-        App.call(this, name, licence, stars);
+        super(name, licence, stars);
         this.url = url;
         this.technologies = technologies;
     }
-}
-//Inherit methods from App
-WebApp.prototype = Object.create(App.prototype);
-WebApp.prototype.constructor = WebApp;
 
-//adding methods to WebApp
-
-WebApp.prototype.reactBased = function () {
-    var tech = this.technologies.toLowerCase();
-    var string = "";
-    if (tech === "react") {
-        string = "Its in React";
-    } else {
-        string = "Its not written in React";
+    reactBased() {
+        var tech = this.technologies.toLowerCase();
+        var string = "";
+        if (tech === "react") {
+            string = "Its in React";
+        } else {
+            string = "Its not written in React";
+        }
+        return string;
     }
-    return string;
 }
 
-/********************************** MOBILE APP STARTS******************************************/
+//Inherit methods from App
+
+// WebApp.prototype = Object.create(App.prototype);
+// WebApp.prototype.constructor = WebApp;
+
+/********************************** MOBILE APP STARTS ******************************************/
 
 //Constructor fun mobile app
-function MobileApp(platforms, name, licence, stars) {
-    App.call(this, name, licence, stars);
-    this.platforms = platforms;
-}
-//Inherit methods from App
-MobileApp.prototype = Object.create(App.prototype);
-MobileApp.prototype.constructor = MobileApp;
-
-//adding methods to mobile app
-
-
-MobileApp.prototype.forAndroid = function () {
-    var tech = this.platforms.toLowerCase();
-    var string = "";
-    if (tech === "android") {
-        string = "Its in Android";
-    } else {
-        string = "Its not written in Android";
+class MobileApp extends App {
+    constructor(platforms, name, licence, stars) {
+        super(name, licence, stars);
+        this.platforms = platforms;
     }
-    return string;
+
+    forAndroid() {
+        var tech = this.platforms.toLowerCase();
+        var string = "";
+        if (tech === "android") {
+            string = "Its in Android";
+        } else {
+            string = "Its not written in Android";
+        }
+        return string;
+    }
 }
+
+//Inherit methods from App
+
+// MobileApp.prototype = Object.create(App.prototype);
+// MobileApp.prototype.constructor = MobileApp;
+
 
 /*********** TESTING *********/
 

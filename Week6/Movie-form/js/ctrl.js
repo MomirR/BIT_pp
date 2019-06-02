@@ -2,12 +2,13 @@ var mainController = (function (ui, dataCtrl) {
     //path
     var $mainButton = document.querySelector("#button");
 
+    //Event
+    $mainButton.addEventListener("click", function (e) {
+        e.preventDefault();
 
-
-    //validate data
-    function validateData(newMovie) {
+        // var newMovie = new Movie(titleValue, lengthValue, dropValue);
         var dataObj = ui.collectData();
-
+        
         if (!dataObj.title || !dataObj.length || !dataObj.genre || dataObj.length < 0) {
             ui.displayError("Doslo je do greske. Molimo vas popunite sva polja!");
         } else {
@@ -24,21 +25,10 @@ var mainController = (function (ui, dataCtrl) {
             ui.displayingMoviesLength(dataCtrl.calculateMoviesLength());
 
         }
-    }
-
-    $mainButton.addEventListener("click", function mainFunction(e) {
-        e.preventDefault();
-
-        var newMovie = new Movie(titleValue, lengthValue, dropValue);
-
-        mainController.validateData(newMovie);
     });
-
-    return mainFunction()
 
 })(UIController, dataController);
 
-mainController.mainFunction();
 
 
 

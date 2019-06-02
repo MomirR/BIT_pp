@@ -1,48 +1,59 @@
-function Person(name, surname) {
-    this.name = name;
-    this.surname = surname;
+class Person {
+    constructor(name, surname) {
+        this.name = name;
+        this.surname = surname;
+    }
 }
 
-function Employee(job, salary, name, surname) {
-    Person.call(this, name, surname);
-    this.job = job;
-    this.salary = salary;
+class Employee extends Person {
+    constructor(job, salary, name, surname) {
+        super(name, surname);
+        this.job = job;
+        this.salary = salary;
+    }
+
+    getData() {
+        this.Person.call(this, name, surname);
+        return this.name + " " + this.surname + " " + this.salary;
+    }
+
+    getSalary() {
+        console.log(this.salary);
+    }
+
+    increaseSalary() {
+        var tenPercent = (parseInt(this.salary) / 100) * 10;
+        return this.salary * tenPercent;
+    }
 }
 
-function Developer(specialization, job, salary, name, surname) {
-    Employee.call(this, name, surname, job, salary);
-    this.specialization = specialization;
+class Developer extends Employee {
+    constructor(specialization, job, salary, name, surname) {
+        super(name, surname, job, salary);
+        this.specialization = specialization;
+    }
+
+    getSpecialization() {
+        console.log(this.specialization);
+    }
 }
 
-Developer.prototype.getSpecialization = function () {
-    console.log(this.specialization);
+class Manager extends Employee {
+    constructor(department, job, salary, name, surname) {
+        super(job, salary, name, surname)
+        this.department = department;
+    }
+
+    getDepartment() {
+        console.log(this.department);
+    }
+
+    changeDepartment(value) {
+        this.department = value;
+    }
 }
 
-function Manager(department, job, salary, name, surname) {
-    Employee.call(this, job, salary, name, surname)
-    this.department = department;
-}
-
-Manager.prototype.getDepartment = function () {
-    console.log(this.department);
-}
-
-Manager.prototype.changeDepartment = function (value) {
-    this.department = value;
-}
-
-Employee.prototype.getData = function () {
-    this.Person.call(this, name, surname);
-    return this.name + " " + this.surname + " " + this.salary;
-}
-
-Employee.prototype.getSalary = function () {
-    console.log(this.salary);
-}
-Employee.prototype.increaseSalary = function () {
-    var tenPercent = (parseInt(this.salary) / 100) * 10;
-    return this.salary * tenPercent;
-}
+/********************* TESTING STARTS *********************/
 
 var me = new Person("Momir", "Radovanovic");
 var me2 = new Employee("Developer", "1200eur", "Momir", "Radovanovic");
